@@ -1,17 +1,17 @@
 {
   "expo": {
-    "name": "yakoi",
+    "name": "Yakoi",
     "slug": "yakoi",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "4.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/yakoi-icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/yakoi-splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,7 +22,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    }
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yakoi.yakoi",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.yakoi.yakoi"
+    },
+    "description": "Faites le bon choix  avec Yakoi ! Scanenz des milliers d'aliments, ajoutez les a votre consommation et retrouvez les partout avec votre compte"
   }
 }
