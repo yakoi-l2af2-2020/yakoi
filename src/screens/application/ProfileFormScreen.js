@@ -28,8 +28,7 @@ function ProfileFormScreen(props) {
   const [weight, setWeight] = useState(
     props.weight ? props.weight.toString() : "",
   );
-  const [activity, setActivity] = useState(1.2); // Sedentaire par defaut
-
+  const [activity, setActivity] = useState(props.activity || 1.2); // Sedentaire par defaut
   const [loading, setLoading] = useState(false);
 
   /**
@@ -46,15 +45,12 @@ function ProfileFormScreen(props) {
     // Infos de l'utilisateur
     const informations = {
       lastname,
-      dob: formatQuantity(dob) > 0 ? formatQuantity(dob) : 1990,
+      dob: (dob && dob > 0) ? dob : 1990,
       gender,
-      height: formatQuantity(height) > 0 ? formatQuantity(height) : 175,
-      weight: formatQuantity(weight) > 0 ? formatQuantity(weight) : 75,
+      height: (height && height > 0) ?  height : 175,
+      weight: (weight && weight > 0) ? weight : 75,
       activity,
     };
-
-    // Mettre a jour les informations de l'utilisateur
-    props.changer_infos(informations);
 
     setLoading(true);
 
@@ -87,6 +83,9 @@ function ProfileFormScreen(props) {
 
             props.navigation.goBack();
           }
+
+          // Mettre a jour les informations de l'utilisateur
+          props.changer_infos(informations);
         }
 
         // En cas d'erreur
@@ -144,6 +143,7 @@ function ProfileFormScreen(props) {
             <Text style={CSS.input_label}>Sexe</Text>
             <YOptionGroup
               options={["Homme", "Femme"]}
+              option={gender === "f" ? "Femme" : "Homme"}
               setOption={(sexe) => {
                 // Mise a jour du sexe
                 setGender(sexe === "Femme" ? "f" : "m");
@@ -153,7 +153,7 @@ function ProfileFormScreen(props) {
 
           <View style={CSS.input_group}>
             <Text style={CSS.input_label}>
-              Niveau d'activite sportive hebdomadaire{" "}
+              Niveau d'activite sportive hebdomadaire
             </Text>
             <Picker
               selectedValue={activity}

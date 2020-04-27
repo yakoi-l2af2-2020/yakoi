@@ -46,7 +46,7 @@ function YDiagram({ product_calories, nutriments, nutrient_levels }) {
 
   const saturated_fat = {
     key: "5",
-    nutriment: "Acide gras sat.",
+    nutriment: "Acides gras sat.",
     value: nutriments.saturated_fat,
     unit: nutriments.saturated_fat_unit || "g",
     level: nutrient_levels["saturated-fat"],

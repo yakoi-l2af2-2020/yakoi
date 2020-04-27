@@ -7,8 +7,10 @@ import { Colors } from "../styles";
  * @param {Array<string>} props.options - Tableau contenant les differentes options
  * @param {Function} props.setOption - Fonction qui modifie la valeur du receveur
  */
-export default function YOptionGroup({ options, setOption }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+export default function YOptionGroup({ options, option, setOption }) {
+
+  // Index initial a l'index de l'option
+  const [activeIndex, setActiveIndex] = useState(options.indexOf(option.toString()) || 0);
 
   return (
     <View style={CSS.option_group}>

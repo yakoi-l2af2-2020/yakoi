@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Alert,
+  ScrollView
 } from "react-native";
 import { YButton } from "../../components";
 import { Colors } from "../../styles";
@@ -39,8 +40,8 @@ function Profile(props) {
   }
 
   return (
-    <ScrollView style={{ flex: 1 }}>
-      <View style={CSS.container}>
+    <ScrollView style={CSS.container}>
+      <View style={CSS.inner}>
         <Header
           lastname={props.lastname}
           gender={props.gender}
@@ -182,6 +183,9 @@ const CSS = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.white,
+  },
+
+  inner: {
     paddingHorizontal: 16,
   },
 

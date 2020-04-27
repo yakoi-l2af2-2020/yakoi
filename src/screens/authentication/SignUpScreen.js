@@ -40,7 +40,7 @@ function SignUp(props) {
     // Si l'adresse email est invalide
     // Regex de format d'email valide
     const valid_email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (valid_email.test(email) === false) {
+    if (email.length < 254 && valid_email.test(email) === false) {
       Alert.alert("😡 Entrez une adresse email valide");
       return;
     }

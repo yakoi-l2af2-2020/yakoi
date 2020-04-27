@@ -84,14 +84,12 @@ function ProductScreen(props) {
         if (res.ok) {
           setFavorite(!favorite);
 
-          console.log(favorite);
-
           Alert.alert(
             "✔ C'est fait !",
             product.name +
               " a bien ete " +
-              (favorite ? "enleve" : "ajoute") +
-              " a vos favoris",
+              (favorite ? "enleve de" : "ajoute a") +
+              " vos favoris",
           );
         }
       })
@@ -251,7 +249,7 @@ function LabelsAndTags({ ingredients, labels }) {
                   "\nBio: Certifie issu de l'agriculture biologique",
                   "Vegan: Qui exclus tout produit d'origine animale",
                   "Vegetarien: Qui exclus toute viande animale",
-                  "Huile de palme: Huile vegetale possedant des effets tangibles sur la sante des invidus et de la planete (source: OMS)",
+                  "Huile de palme: Huile vegetale possedant des effets tangibles sur la sante des individus et de la planete (source: OMS)",
                 ].join("\n\n"),
               );
             }}

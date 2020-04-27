@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
+  Alert,
 } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 import { YProduct, YLoader, YProgressBar, YEmptyList } from "../../components";
@@ -342,9 +343,26 @@ function TabContent({ data, label, max, goToModifyConsumption }) {
 
       <View style={styles.average_calories_container}>
         <YProgressBar value={calories} max={max} />
-        <Text style={styles.average_calories}>
-          {calories} / {max} kcal ({Math.round((100 * calories) / max)}%)
-        </Text>
+
+        <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
+          <Text style={styles.average_calories}>
+            {calories} / {max} kcal ({Math.round((100 * calories) / max)}%)
+          </Text>
+          <TouchableOpacity
+            style={{ marginLeft: 8 }}
+            onPress={() => {
+              Alert.alert(
+                "Calories journalier",
+                [
+                  "\nLe nombre de calories journalier est calcule a partir de la Formule de Harris et Benedict.\n",
+                  "Elle prend en compte votre age, taille, poids et activite physique hebdomadaire."
+                ].join("\n"),
+              );
+            }}
+          >
+            <MaterialIcons name="info-outline" size={28} color={Colors.gray} />
+          </TouchableOpacity>
+        </View>
       </View>
 
       <FlatList
@@ -478,6 +496,7 @@ function mapStateToProps(state) {
     height: state.height,
     weight: state.weight,
     dob: state.dob,
+    activity: state.activity,
   };
 }
 

@@ -20,7 +20,7 @@ import ConsumptionFormScreen from "./ConsumptionFormScreen";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 function Scan(props) {
-  const INITIAL_BARCODE = "";
+  const INITIAL_BARCODE = "3088540004440";
   const [barcode, setBarcode] = useState(INITIAL_BARCODE);
   const [searching, setSearching] = useState(false);
 
@@ -140,7 +140,7 @@ function Scan(props) {
                 : Camera.Constants.FlashMode.off
             }
           >
-            <View style={{ margin: 32 }}>
+            <View style={{ marginTop: 64, marginLeft: 32 }}>
               <YIconButton
                 name="white-balance-sunny"
                 onPress={toggleTorch}
@@ -270,7 +270,12 @@ function mapStateToProps(state) {
 }
 
 const ScanScreen = createStackNavigator({
-  Scan: connect(mapStateToProps)(withNavigationFocus(Scan)),
+  Scan: {
+    screen: connect(mapStateToProps)(withNavigationFocus(Scan)),
+    navigationOptions: {
+      headerShown: false
+    }
+  },
   ProductScreen: {
     screen: ProductScreen,
     navigationOptions: {

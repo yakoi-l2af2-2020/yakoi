@@ -205,7 +205,7 @@ function ConsumptionFormScreen(props) {
 
             <View style={CSS.input_group}>
               <Text style={CSS.input_label}>Unite</Text>
-              <YOptionGroup options={UNITS} setOption={setUnit} />
+              <YOptionGroup options={UNITS} option={unit} setOption={setUnit} />
             </View>
 
             <View style={CSS.input_group}>
