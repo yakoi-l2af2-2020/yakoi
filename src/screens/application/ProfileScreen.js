@@ -39,24 +39,26 @@ function Profile(props) {
   }
 
   return (
-    <View style={CSS.container}>
-      <Header
-        lastname={props.lastname}
-        gender={props.gender}
-        email={props.email}
-        dob={props.dob}
-      />
+    <ScrollView style={{ flex: 1 }}>
+      <View style={CSS.container}>
+        <Header
+          lastname={props.lastname}
+          gender={props.gender}
+          email={props.email}
+          dob={props.dob}
+        />
 
-      <Informations {...props} />
+        <Informations {...props} />
 
-      <YButton title="Modifier" onPress={goToModifyProfile} />
-      <YButton secondary title="Deconnexion" onPress={logout} />
-      <YButton
-        secondary
-        title="Changer de mot de passe"
-        onPress={goToModifyPassword}
-      />
-    </View>
+        <YButton title="Modifier" onPress={goToModifyProfile} />
+        <YButton secondary title="Deconnexion" onPress={logout} />
+        <YButton
+          secondary
+          title="Changer de mot de passe"
+          onPress={goToModifyPassword}
+        />
+      </View>
+    </ScrollView>
   );
 }
 
@@ -125,7 +127,9 @@ function Informations({ gender, height, weight }) {
           {height && (
             <TableRow label="Taille" value={(height / 100).toFixed(2) + " m"} />
           )}
-          {weight && <TableRow label="Poids" value={Number(weight).toFixed(2) + " kg"} />}
+          {weight && (
+            <TableRow label="Poids" value={Number(weight).toFixed(2) + " kg"} />
+          )}
           {height && weight && (
             <View style={CSS.row}>
               <Text style={CSS.label}>IMC</Text>
