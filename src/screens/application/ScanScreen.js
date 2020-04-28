@@ -17,10 +17,9 @@ import { getProduct, formatProductData, ROUTES } from "../../utils";
 import ProductScreen from "./ProductScreen";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import ConsumptionFormScreen from "./ConsumptionFormScreen";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 function Scan(props) {
-  const INITIAL_BARCODE = "3088540004440";
+  const INITIAL_BARCODE = "";
   const [barcode, setBarcode] = useState(INITIAL_BARCODE);
   const [searching, setSearching] = useState(false);
 
@@ -164,16 +163,14 @@ function Scan(props) {
     return (
       <YContainer>
         <View style={CSS.container}>
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={CSS.container}>
-              <BarcodeForm
-                barcode={barcode}
-                setBarcode={setBarcode}
-                onSubmit={handleSubmit}
-                pending={searching}
-              />
-            </View>
-          </TouchableWithoutFeedback>
+          <View style={CSS.container}>
+            <BarcodeForm
+              barcode={barcode}
+              setBarcode={setBarcode}
+              onSubmit={handleSubmit}
+              pending={searching}
+            />
+          </View>
         </View>
       </YContainer>
     );
